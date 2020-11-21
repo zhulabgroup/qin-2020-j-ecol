@@ -1,0 +1,71 @@
+This folder contains all of the data used in the analysis of soil microbial communities in the Jasper Ridge Global Change Experiment by Qin et al. The manuscript associated with this data was accepted by the Journal of Ecology on August 28, 2019.
+
+To analyze this data using the authors' R code, clone or download the GitHub repository at https://github.com/claraqin/JRGCE_soil_microbes. If your local copy of the repository does not already include a 'data' folder, then move this data folder into your local copy. Then follow the R scripts in numerical order beginning with '0_setup.R'.
+
+This folder does NOT include the FASTQ files associated with the raw reads from Illumina MiSeq. The FASTQ files are available from the authors by request.
+
+Each data file is described below:
+
+#####
+
+GCE_compiled_data.csv
+
+Table containing data associated with the site, experimental design, and environmental covariates.
+
+- id: unique ID associated with a quadrant, which is the smallest observational unit in this study.
+- plot: unique ID associated with a plot, each of which contains four quadrants.
+- x: custom-scaled coordinate of the plot based on aerial imagery, used in conjunction with 'y' for approximating geographic distance.
+- y: custom-scaled coordinate of the plot based on aerial imagery, used in conjunction with 'x' for approximating geographic distance.
+- burn.blocks: grouping variable used to divide the eight blocks of the experiment into four pairs. Within each pair, one block was selected to be burned in 2011. This variable was not used in the final analysis.
+- quad: quadrant within a given plot; ranges from 1 to 4.
+- treatment.group: concatenation of 'N', 'CO2', 'heat', and 'precip' columns.
+- N: nitrogen treatment; '1' for ambient, '2' for elevated (+7 g N m-2).
+- CO2: CO2 treatment; '1' for ambient, '2' for elevated (+275 ppm).
+- heat: temperature treatment; '1' for ambient, '2' for elevated (+1-2 ºC).
+- precip: precipitation treatment; '1' for ambient, '2' for elevated (+50% volume with +3 weeks duration).
+- burn.2011: prescribed burn in 2011; '1' for no burn, '2' for burn.
+- wildfire.2003: wildfire in 2003; '1' for no burn, '2' for burn.
+- CE.batch: unique number associated with a batch of soil samples analyzed together in the Carlo Erba NA 1500 Elemental Analyzer. In R code, soil measurements are recentered to remove batch-specific effects.
+- perc.N: total soil nitrogen (percent by mass).
+- perc.C: total soil carbon (percent by mass).
+- N.mg: total soil nitrogen (mg).
+- C.mg: total soil carbon (mg).
+- water.content: soil water content (mass of water over soil dry mass).
+- pH: soil pH.
+- NPP: total net primary production (g m-2 y-1).
+
+#####
+
+otu_table_wTax_ITS.biom
+
+BIOM-formatted OTU table with taxonomy, based on Illumina MiSeq ITS (fungal) reads. Analyzed using phyloseq. 
+
+#####
+
+otu_table_wTax_16S.biom
+
+BIOM-formatted OTU table with taxonomy, based on Illumina MiSeq 16S (bacterial) reads. Analyzed using phyloseq. 
+
+#####
+
+mapping_file_ITS.txt
+
+Maps sample IDs of otu_table_wTax_ITS.biom to sample IDs ("id") in GCE_compiled_data.csv.
+
+#####
+
+mapping_file_16S.txt
+
+Maps sample IDs of otu_table_wTax_16S.biom to sample IDs ("id") in GCE_compiled_data.csv.
+
+#####
+
+plant_biomass.csv
+
+Table of plant biomass (g m-2 y-1) by species in each quadrant of each plot. Species codes are matched to species names in plant_species.csv.
+
+#####
+
+plant_species.csv
+
+Matches species codes in plant_biomass.csv to full species names, and includes other information about each plant species.
