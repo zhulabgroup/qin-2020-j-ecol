@@ -4,3 +4,5 @@ code/*.RData
 data/*
 results/*
 .Rproj.user
+Rplots.pdf
+*.RData
